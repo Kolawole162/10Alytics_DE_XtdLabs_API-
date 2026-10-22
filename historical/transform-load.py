@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql import functio
+from pyspark.sql import functions as F
 import os
 import sys
 
@@ -10,8 +10,8 @@ os.environ['PYSPARK_PYTHON'] = sys.executable
 os.environ['PYSPARK_DRIVER_PYTHON'] = sys.executable
 
 # create spark session
-spark = SparkSession.builder.appName
-("XTD_Labs_Historical_Data_Processing").master("local").getorCreate()
+spark = SparkSession.builder.appName("XTD_Labs_Historical_Data_Processing").master("local").getOrCreate()
+
 #Ignore Warnings
 spark.sparkContext.setLogLevel("ERROR")
 
@@ -34,7 +34,7 @@ silver_df = exploded_df.select(
     "timestamp",
     F.col("region.regionid").alias('regionid'),
     F.col("region.shortname").alias('shortname'),
-    F.col("region.dnoregion").alias('dnoregion'),
+    F.col("region.dnoregion").alias('dno'),
     F.col("region.intensity.forecast").alias("intensity"),
     F.col("region.intensity.index").alias("index"),
     F.explode(F.col("region.generationmix")).alias("mix")
