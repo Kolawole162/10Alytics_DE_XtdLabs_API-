@@ -1,5 +1,3 @@
-# 10Alytics_Data_Engineering_API 
-This project exposes the usage of API
 # UK Carbon Intensity ETL Pipeline
 
 An ETL pipeline that pulls regional carbon-intensity data from the public UK Carbon Intensity API and loads it into PostgreSQL for analysis.
